@@ -66,27 +66,33 @@ textarea#kkotipInput {
 div#keyboard {
     text-align: center; /* 버튼 중앙 정렬 */
     margin-top: 20px;
-    display: flex; /* 버튼들을 가로로 나란히 정렬 */
-    flex-wrap: wrap; /* 화면이 좁으면 다음 줄로 넘어가도록 */
-    justify-content: center; /* 버튼들을 중앙으로 정렬 */
-    gap: 10px; /* 버튼 사이 간격 */
+    display: flex;
+    flex-wrap: nowrap; /* !!!! 이 부분이 중요해! 줄바꿈을 하지 않도록 설정 !!!! */
+    justify-content: center;
+    gap: 8px; /* 버튼 사이 간격, 너무 좁지 않게 조절 */
+    overflow-x: auto; /* 만약 화면이 너무 작아서 버튼이 넘치면 스크롤 가능하게 */
+    padding: 5px 0; /* 좌우 스크롤 시 여백 확보 */
+    width: 100%; /* 너비를 꽉 채우도록 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
 /* 키보드 버튼 스타일 */
 div#keyboard button {
     font-family: 'KkotipHangul', sans-serif; /* 버튼에도 꽃잎한글 폰트 적용 */
     font-size: 1.2em; /* 버튼 글자 크기 */
-    padding: 12px 20px; /* 버튼 패딩 */
-    margin: 5px; /* 버튼 간 여백 */
+    padding: 12px 10px; /* 버튼 패딩 (좌우 좀 줄임) */
+    margin: 0; /* flex gap을 사용하므로 margin은 0으로 */
     border: 1px solid #4CAF50; /* 지아의 초록색 테두리 */
     background-color: #e8f5e9; /* 연한 초록색 배경 */
     color: #388e3c; /* 진한 초록색 글자 */
     border-radius: 8px; /* 둥근 모서리 */
     cursor: pointer; /* 마우스 오버 시 포인터 변경 */
     transition: background-color 0.3s ease, transform 0.1s ease; /* 부드러운 효과 */
-    min-width: 120px; /* 버튼 최소 너비 설정 */
+    flex-shrink: 0; /* !!!! 이 부분이 중요해! 버튼이 너무 작게 찌그러지지 않도록 (혹시 모르니) !!!! */
     flex-grow: 1; /* 공간이 남으면 버튼이 늘어나도록 */
-    max-width: 200px; /* 버튼 최대 너비 설정 */
+    min-width: 80px; /* 버튼 최소 너비 설정 (4개 버튼이 한 줄에 보이기 위함) */
+    max-width: 25%; /* 한 줄에 4개가 보이도록 최대 너비 제한 (대략 25% * 4 = 100%) */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
 div#keyboard button:hover {
@@ -112,7 +118,7 @@ body > p:last-of-type {
    ======================================= */
 @media (max-width: 768px) {
     body {
-        padding: 10px; /* 모바일에서 좌우 여백 줄이기 */
+        padding: 5px; /* 모바일에서 좌우 여백 더 줄이기 */
     }
 
     h1 {
@@ -133,11 +139,12 @@ body > p:last-of-type {
         height: 150px; /* 모바일에서 높이 조절 */
     }
 
+    /* 모바일에서는 버튼을 더 작게 조정하여 한 줄에 4개 유지 */
     div#keyboard button {
-        font-size: 1.1em; /* 모바일에서 버튼 글자 크기 조절 */
-        padding: 10px 15px; /* 모바일에서 버튼 패딩 조절 */
-        min-width: 100px; /* 모바일에서 버튼 최소 너비 */
-        flex-basis: 45%; /* 한 줄에 2개씩 배치되도록 (간격 포함) */
+        font-size: 0.9em; /* 모바일에서 버튼 글자 크기 조절 */
+        padding: 8px 6px; /* 모바일에서 버튼 패딩 더 줄임 */
+        min-width: 22%; /* 4개 버튼이 한 줄에 보이기 위함 (gap 포함) */
+        flex-basis: 22%;
     }
 }
 
@@ -146,15 +153,15 @@ body > p:last-of-type {
    ======================================= */
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.8em;
+        font-size: 1.6em; /* 더 작은 모바일에서 제목 크기 더 줄임 */
     }
 
     h2 {
-        font-size: 1.6em;
+        font-size: 1.4em;
     }
 
     .kkotip-hangul {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     textarea#kkotipInput {
@@ -163,9 +170,9 @@ body > p:last-of-type {
     }
 
     div#keyboard button {
-        font-size: 1em;
-        padding: 8px 12px;
-        min-width: 80px;
-        flex-basis: 48%; /* 한 줄에 2개씩 배치하되 간격 더 좁게 */
+        font-size: 0.8em; /* 아주 작은 모바일에서 버튼 글자 크기 더 줄임 */
+        padding: 6px 4px; /* 패딩도 최소화 */
+        min-width: 21%; /* 4개 버튼을 더 압축해서 한 줄에 보이기 위함 */
+        flex-basis: 21%;
     }
 }
