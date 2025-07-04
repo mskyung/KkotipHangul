@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꽃잎한글 테스트 페이지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>안녕하세요!<br> 꽃잎한글 테스트 입니다.</h1>
+    <p class="kkotip-hangul">
+       	이 문단은 꽃잎한글 폰트가 적용될 부분 입니다.<br>
+        여기에 새로 만든 'r', 'v', 'z', 'f' 등,<br>
+        새로운 글자들을 직접 입력해서 테스트 해 볼 수 있어요!<br>
+        한글의 새로운 미래, 꽃잎한글!
+    </p>
+    <h2>꽃잎한글 새로운 자음 입력기</h2>
+    <textarea id="kkotipInput" rows="10" cols="100" class="kkotip-hangul" placeholder="여기에 새로운 자음을 입력해보세요!"></textarea>
+    <br>
+    <div id="keyboard">
+        <button data-char="&#xE000;">r 발음</button>
+        <button data-char="&#xE001;">v 발음</button>
+        <button data-char="&#xE002;">z 발음</button>
+        <button data-char="&#xE003;">f 발음</button>
+    </div>
+
+    <p>
+        이 문단은 기본 폰트로 보임.
+    </p>
+
+    <script>
+        // 1. 입력 상자 (textarea) 가져오기
+        const kkotipInput = document.getElementById('kkotipInput');
+
+        // 2. 키보드 버튼들 (div#keyboard 안의 모든 button) 가져오기
+        const buttons = document.querySelectorAll('#keyboard button');
+
+        // 3. 각 버튼에 '클릭' 이벤트 리스너 추가하기
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 4. 클릭된 버튼의 'data-char' 값 (PUA 문자) 가져오기
+                const charToInsert = button.dataset.char;
+
+                // 5. 입력 상자에 문자 추가하기
+                kkotipInput.value += charToInsert;
+
+                // (선택 사항: 입력 후 커서를 맨 끝으로 옮기기)
+                kkotipInput.focus();
+                kkotipInput.setSelectionRange(kkotipInput.value.length, kkotipInput.value.length);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
