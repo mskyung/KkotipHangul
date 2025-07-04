@@ -10,10 +10,8 @@
 
     <h1>안녕하세요!<br> 꽃잎한글 테스트 입니다.</h1>
     <p class="kkotip-hangul">
-        이 문단은 꽃잎한글 폰트가 적용될 부분 입니다.<br>
-        여기에 새로 만든 'r', 'v', 'z', 'f' 등,<br>
-        새로운 글자들을 직접 입력해서 테스트 해 볼 수 있어요!<br>
-        한글의 새로운 미래, 꽃잎한글!
+        한글에 없는 'r', 'v', 'z', 'f' 발음을 기록하기 위한<br>
+        새로운 자음('rㅣ으r', 'vㅣ으v', 'zㅣ으z', 'fㅣ으f')을 테스트 해 볼 수 있어요!
     </p>
     <h2>꽃잎한글 새로운 자음 입력기</h2>
 
@@ -23,11 +21,14 @@
         <button data-char="&#xE002;">z 발음</button>
         <button data-char="&#xE003;">f 발음</button>
     </div>
-    <br> <textarea id="kkotipInput" rows="10" cols="100" class="kkotip-hangul" placeholder="여기에 새로운 자음을 입력해보세요!"></textarea>
+    <br>
 
-    <p>
-        이 문단은 기본 폰트로 보임.
-    </p>
+    <textarea id="kkotipInput" rows="10" cols="100" class="kkotip-hangul" placeholder="여기에 새로운 자음을 입력해보세요!"></textarea>
+
+    <div id="controls">
+        <button id="refreshButton">Refresh (초기화)</button>
+    </div>
+    <br>
 
     <script>
         // 1. 입력 상자 (textarea) 가져오기
@@ -49,6 +50,13 @@
                 kkotipInput.focus();
                 kkotipInput.setSelectionRange(kkotipInput.value.length, kkotipInput.value.length);
             });
+        });
+
+        // !!!! 여기에 Refresh 버튼 기능 추가 !!!!
+        const refreshButton = document.getElementById('refreshButton');
+        refreshButton.addEventListener('click', () => {
+            kkotipInput.value = ''; // 입력 상자의 내용을 비움
+            kkotipInput.focus(); // 초기화 후 다시 입력 상자에 커서 포커스
         });
     </script>
 

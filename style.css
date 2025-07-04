@@ -67,7 +67,7 @@ div#keyboard {
     text-align: center; /* 버튼 중앙 정렬 */
     margin-top: 20px;
     display: flex;
-    flex-wrap: nowrap; /* !!!! 이 부분이 중요해! 줄바꿈을 하지 않도록 설정 !!!! */
+    flex-wrap: nowrap; /* 줄바꿈을 하지 않도록 설정 */
     justify-content: center;
     gap: 8px; /* 버튼 사이 간격, 너무 좁지 않게 조절 */
     overflow-x: auto; /* 만약 화면이 너무 작아서 버튼이 넘치면 스크롤 가능하게 */
@@ -88,10 +88,10 @@ div#keyboard button {
     border-radius: 8px; /* 둥근 모서리 */
     cursor: pointer; /* 마우스 오버 시 포인터 변경 */
     transition: background-color 0.3s ease, transform 0.1s ease; /* 부드러운 효과 */
-    flex-shrink: 0; /* !!!! 이 부분이 중요해! 버튼이 너무 작게 찌그러지지 않도록 (혹시 모르니) !!!! */
+    flex-shrink: 0; /* 버튼이 너무 작게 찌그러지지 않도록 */
     flex-grow: 1; /* 공간이 남으면 버튼이 늘어나도록 */
-    min-width: 80px; /* 버튼 최소 너비 설정 (4개 버튼이 한 줄에 보이기 위함) */
-    max-width: 25%; /* 한 줄에 4개가 보이도록 최대 너비 제한 (대략 25% * 4 = 100%) */
+    min-width: 80px; /* 버튼 최소 너비 설정 */
+    max-width: 25%; /* 한 줄에 4개가 보이도록 최대 너비 제한 */
     box-sizing: border-box; /* 패딩 포함 너비 계산 */
 }
 
@@ -104,6 +104,36 @@ div#keyboard button:active {
     background-color: #c8e6c9; /* 클릭 시 색상 변경 */
     transform: translateY(0); /* 클릭 시 원래 위치로 */
 }
+
+/* Refresh 버튼 컨테이너 */
+div#controls {
+    text-align: center; /* 버튼 중앙 정렬 */
+    margin-top: 20px;
+}
+
+/* Refresh 버튼 스타일 */
+button#refreshButton {
+    font-family: '맑은 고딕', 'Malgun Gothic', sans-serif; /* 기본 폰트 사용 */
+    font-size: 1.1em;
+    padding: 10px 20px;
+    border: 1px solid #d32f2f; /* 빨간색 테두리 (초기화 느낌) */
+    background-color: #ffebee; /* 연한 빨간색 배경 */
+    color: #c62828; /* 진한 빨간색 글자 */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button#refreshButton:hover {
+    background-color: #ffcdd2;
+    transform: translateY(-2px);
+}
+
+button#refreshButton:active {
+    background-color: #ef9a9a;
+    transform: translateY(0);
+}
+
 
 /* 하단 기본 폰트 문단 */
 body > p:last-of-type {
@@ -146,6 +176,11 @@ body > p:last-of-type {
         min-width: 22%; /* 4개 버튼이 한 줄에 보이기 위함 (gap 포함) */
         flex-basis: 22%;
     }
+
+    button#refreshButton {
+        font-size: 1em;
+        padding: 8px 15px;
+    }
 }
 
 /* =======================================
@@ -174,5 +209,10 @@ body > p:last-of-type {
         padding: 6px 4px; /* 패딩도 최소화 */
         min-width: 21%; /* 4개 버튼을 더 압축해서 한 줄에 보이기 위함 */
         flex-basis: 21%;
+    }
+
+    button#refreshButton {
+        font-size: 0.9em;
+        padding: 6px 12px;
     }
 }
