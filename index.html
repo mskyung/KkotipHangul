@@ -3,61 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꽃잎한글 테스트(KkotipHangul Test)</title>
+    <title>꽃잎한글</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>(Test new Hangul) 안녕하세요!<br> 꽃잎한글 테스트 입니다.</h1>
-    <p class="kkotip-hangul">
-        자음 'r', 'v', 'z', 'f' 가 추가된, 새로운 한글을 테스트 해 볼 수 있어요! (KkotipHangul added consonant 'r', 'v', 'z', 'f' and can write world sound.)
-    </p>
-    <h2>꽃잎한글 새로운 자음 입력기</h2>
+    <h1>꽃잎한글</h1>
+    <button id="copyButton">Copy</button>
+	<button id="saveButton">Save</button>
+    <textarea id="kkotipInput" rows="10" placeholder="여기에 꽃잎한글이 입력됩니다."readonly></textarea>
 
-    <div id="keyboard">
-        <button data-char="&#xE000;">r 발음</button>
-        <button data-char="&#xE001;">v 발음</button>
-        <button data-char="&#xE002;">z 발음</button>
-        <button data-char="&#xE003;">f 발음</button>
+    <div id="controlPanel">
+        <div class="hand-selection">
+            <input type="radio" id="leftHand" name="handOption" value="left">
+            <label for="leftHand">좌</label>            
+			<input type="radio" id="rightHand" name="handOption" value="right" checked>
+            <label for="rightHand">우</label>			
+        </div>
+	<button id="refreshButton" style="margin-top: 5px; padding: 4px 4px; font-size: 1em;">Refresh</button>
+	<button id="deleteButton">←</button>
+	<button id="Number">123</button>
+	<button id="Symbol">SYM</button>
+	<button id="English">EN</button>
+	<button id="Korean">KR</button>	
     </div>
-    <br>
-
-    <textarea id="kkotipInput" rows="10" cols="100" class="kkotip-hangul" placeholder="여기에 새로운 자음을 입력해보세요!"></textarea>
-
-    <div id="controls">
-        <button id="refreshButton">Refresh (초기화)</button>
+    
+    <div id="inputButtons">
+        <button id="mainInputButton" class="input-button">
+            <div class="lines">
+                 <span class="line-22-5"></span>
+                 <span class="line-67-5"></span>
+                 <span class="line-112-5"></span>
+                 <span class="line-157-5"></span>
+            </div>
+            <div class="center-circle"></div> </button>
     </div>
-    <br>
-	<p>'r', 'v', 'z', 'f'에 해당하는 자음이 모음과 조화롭게 연결되지 못하는 것은 Unicode 가 없기 때문입니다.</p>
-    <script>
-        // 1. 입력 상자 (textarea) 가져오기
-        const kkotipInput = document.getElementById('kkotipInput');
+		<div class="direction-hints">
+		<span class="hint up">↑</span>
+		<span class="hint down">↓</span>
+		<span class="hint left">←</span>
+		<span class="hint right">→</span>
+		<span class="hint up-left">↖</span>
+		<span class="hint up-right">↗</span>
+		<span class="hint down-left">↙</span>
+		<span class="hint down-right">↘</span>
+	</div>
 
-        // 2. 키보드 버튼들 (div#keyboard 안의 모든 button) 가져오기
-        const buttons = document.querySelectorAll('#keyboard button');
-
-        // 3. 각 버튼에 '클릭' 이벤트 리스너 추가하기
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 4. 클릭된 버튼의 'data-char' 값 (PUA 문자) 가져오기
-                const charToInsert = button.dataset.char;
-
-                // 5. 입력 상자에 문자 추가하기
-                kkotipInput.value += charToInsert;
-
-                // (선택 사항: 입력 후 커서를 맨 끝으로 옮기기)
-                kkotipInput.focus();
-                kkotipInput.setSelectionRange(kkotipInput.value.length, kkotipInput.value.length);
-            });
-        });
-
-        // !!!! 여기에 Refresh 버튼 기능 추가 !!!!
-        const refreshButton = document.getElementById('refreshButton');
-        refreshButton.addEventListener('click', () => {
-            kkotipInput.value = ''; // 입력 상자의 내용을 비움
-            kkotipInput.focus(); // 초기화 후 다시 입력 상자에 커서 포커스
-        });
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
