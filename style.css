@@ -69,14 +69,14 @@ textarea#kkotipInput {
     z-index: 1010; 
     text-align: center;
     background-color: #ffffff; 
-    padding: 8px;
-    border-radius: 8px;
+    padding: 5px;
+    border-radius: 5px;
     border: 1px solid #e0e0e0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
     box-sizing: border-box; 
     margin: 0; 
     box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
@@ -86,10 +86,10 @@ textarea#kkotipInput {
 #controlPanel button#Symbol,
 #controlPanel button#English,
 #controlPanel button#Korean {
-    min-width: 40px;
-    padding: 6px 6px;
+    min-width: 35px;
+    padding: 5px 5px;
     font-size: 0.9em;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
 
@@ -117,11 +117,11 @@ textarea#kkotipInput {
 #controlPanel button {
     font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
     font-size: 0.95em;
-    padding: 6px 8px;
+    padding: 5px 5px;
     border: 1px solid #4CAF50;
     background-color: #e8f5e9;
     color: #2e7d32;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
     min-width: 60px; 
@@ -161,9 +161,9 @@ button#deleteButton {
     border-color: #aaa;
     background-color: #f3f3f3;
     color: #333;
-	min-width: 40px !important;
-    padding: 6px 6px;
-    font-size: 1em;
+	min-width: 35px !important;
+    padding: 5px 5px;
+    font-size: 0.95em;
 }
 button#deleteButton:hover {
     background-color: #ffcdd2;
